@@ -12,11 +12,11 @@ facts = ["2010 - 2019 гг стал самым жарким десетилети
          "за последние 40 лет ледяной покров Арктики сократился на 40%! OwO",
          "с 1993 по 2019 год ледняки Гренландии потеряли около 250 МИЛЛИАРДОВ тонн льда!!! QwQ",
          "человечество вырабатывает больше углекислого газа чем вулканы ! owo"]
-bot = telebot.TeleBot("") 
+bot = telebot.TeleBot("7704115421:AAHykbkd5vqZPMuRj5w-9WJX26g0UZIhGJw") 
 
 @bot.message_handler(commands=['start',"hi","hello"])
 def send_welcome(message):
-    bot.reply_to(message, "Привет! Эко-бот и я могу помочь тебе с глобальным потеплением >w< (/help если нужна помощь с командами 0W0))")
+    bot.reply_to(message, "Привет!я Эко-бот и я могу помочь тебе с глобальным потеплением >w< (/help если нужна помощь с командами 0W0))")
 
 
 
@@ -24,8 +24,20 @@ def send_welcome(message):
 def send_adv(message):
     adv = random.choice(advs)
     bot.reply_to(message,f'{adv} =w= /help - для поиска команд')
-    
 
+
+
+@bot.message_handler(commands=['cho'])
+def send_adv(message):
+    cho = int(message.text.split()[1]) if len(message.text.split()) > 1 else 0
+    if cho == 0:
+        bot.reply_to(message, '1 - Глобальное потепление , 2 - парниковый эффект, 3 - парниковые газы OwO')
+    if cho == 1:
+        bot.reply_to(message, 'Глобальное потепление - это повышение средней температуры земли, вызваное парниковым эффектом. owo /help - для поиска команд')
+    if cho == 2:
+        bot.reply_to(message, 'Парниковый эффект - это когда солнце светит на нашу планету и часть её радиации отражается к солнцу, а часть снова отражается к земле из-за парниковых газов, нагревая её. OwO /help - для поиска команд')
+    if cho == 3:
+        bot.reply_to(message, 'Парниковые газы - метан,водяные пары,угликислые газы,оксиды азотов и др. !w! /help - для поиска команд')
 
 @bot.message_handler(commands=['fact'])
 def send_fact(message):
@@ -56,7 +68,7 @@ def send_game(message):
     game_choice = int(message.text.split()[1]) if len(message.text.split()) > 1 else 0
     
     if game_choice == 0:
-        bot.reply_to(message,"Забыл поставить номер игры после команды -W-")
+        bot.reply_to(message,"Забыл поставить номер игры после команды! -W-")
     if game_choice == 1:
         global game,dice
 
@@ -69,7 +81,7 @@ def send_play(message):
     global game , dice
     play = int(message.text.split()[1]) if len(message.text.split()) > 1 else 0
     if game == 0:
-        bot.reply_to(message,"Игра не выбрана ")
+        bot.reply_to(message,"Игра не выбрана! -W- ")
     if game == 1:
         if play == dice:
             bot.reply_to(message,"Ты угадал число! ^w^")
@@ -79,7 +91,7 @@ def send_play(message):
     
 @bot.message_handler(commands=['help'])
 def send_commands(message):
-    bot.reply_to(message,'/advs - даёт совет по борьбе с глобальным потеленем,/fact - случайный факт про глобальные потепления,/gamelist - список мини игр,/game - выбор мини игры,/play - действие в игре (если игра выбрана) . ^w^')
+    bot.reply_to(message,'/advs - даёт совет по борьбе с глобальным потеленем,/fact - случайный факт про глобальные потепления,/gamelist - список мини игр,/game - выбор мини игры,/play - действие в игре (если игра выбрана),/cho - узнай о чем-нибуть. ^w^')
 
 
 
